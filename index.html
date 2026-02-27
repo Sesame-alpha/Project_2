@@ -149,36 +149,55 @@ input:focus, textarea:focus {
         Advertising graphics
     </p>
 </section>
-
-
-
 <section id="contact">
     <h2>Contact Us</h2>
-    <p>Send us a message for design orders and enquiries.We will be pleased to help you!!</p>
-
-    <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
+    <p>Send us a message for design orders and enquiries.</p>
+ 
+    <form id="contactForm">
+ 
+        <input type="text" id="name" placeholder="Your Name" required>
+ 
+        <input type="email" id="email" placeholder="Your Email" required>
+ 
+        <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+ 
         <div style="display:flex; gap:15px; justify-content:center; flex-wrap:wrap;">
-            <button type="submit" onclick="sendMessage(event)">Send Message</button>
+            <button type="button" onclick="sendMessage()">Send Message</button>
             <button type="button" onclick="clearForm()">Clear Message</button>
         </div>
-        <p id="ack" style="color:#d63384; font-weight:bold; margin-top:20px;"></p>    
+ 
+        <p id="ack" style="color:#d63384; font-weight:bold; margin-top:20px;"></p>
+ 
     </form>
-<script>
-    function sendMessage(event){
-        event.preventDefault();
-        document.getElementById('ack').innerText = 'Message Sent! Thank you';
-    }
-    function clearForm(){
-        document.querySelector('Form').reset();
-        document.getElementById('ack').innerText = '';
-    }   
-</script>
-    <p>Email: dithupasesame@gmail.com</p>
 </section>
-
+ 
+<script>
+function sendMessage(){
+ 
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+ 
+    if(name === "" || email === "" || message === ""){
+        alert("Please fill all fields before sending message");
+        return;
+    }
+ 
+    // Since there is no backend service connected,
+    // this function only shows acknowledgement.
+ 
+    document.getElementById("ack").innerText = "Message Sent! Thank you";
+ 
+    document.getElementById("contactForm").reset();
+}
+ 
+function clearForm(){
+    document.getElementById("contactForm").reset();
+    document.getElementById("ack").innerText = "";
+}
+</script>
+ 
+<p>Email: dithupasesam@gmail.com</p>
 <footer>
     <p>© 2026 Sesame Designs</p>
     <p>
